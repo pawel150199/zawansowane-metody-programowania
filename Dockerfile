@@ -12,7 +12,7 @@ RUN pip install cryptography==3.4.6
 # Optionally, set a working directory
 WORKDIR /app
 
-LABEL maintainer="Paweł Polski <harcownikapp@gmail.com>"
+LABEL maintainer="Paweł Polski"
 
 
 # Install Poetry
