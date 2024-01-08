@@ -80,5 +80,5 @@ def update_group(
             status_code=404,
             detail="The group with this username does not exist in the system",
         )
-    level_report = crud.update_group(db, group_obj=group, group_in=group_in)
-    return level_report
+    report = crud.update_group(db, group_obj=group, group_in=group_in)
+    return report
