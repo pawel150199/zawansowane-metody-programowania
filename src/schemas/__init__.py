@@ -1,10 +1,6 @@
-from .badge import (Badge, BadgeAll, BadgeBase, BadgeBaseWithId, BadgeGroup,
-                    CreateBadge)
-from .badge_report import (BadgeReport, BadgeReportBase, CreateBadgeReport,
-                           CreateMyBadgeReport, UpdateBadgeReport)
 from .group import CreateGroup, Group, GroupBase, UpdateGroup
-from .level_report import (CreateLevelReport, CreateMyLevelReport, LevelReport,
-                           LevelReportBase, UpdateLevelReport)
+from .report import (CreateReport, CreateMyReport, Report,
+                           ReportBase, UpdateReport)
 from .message import Message
 from .reports_history import PdfFile, PdfFileCreate
 from .token import Token, TokenPayload

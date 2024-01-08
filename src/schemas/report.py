@@ -3,24 +3,24 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-class LevelReportBase(BaseModel):
+class ReportBase(BaseModel):
     title: Optional[str]
 
 
-class UpdateLevelReport(LevelReportBase):
+class UpdateReport(ReportBase):
     status: Optional[str]
 
 
-class CreateLevelReport(LevelReportBase):
+class CreateReport(ReportBase):
     status: str
     user_id: int
 
 
-class CreateMyLevelReport(LevelReportBase):
+class CreateMyReport(ReportBase):
     status: str
 
 
-class LevelReport(LevelReportBase):
+class Report(ReportBase):
     id: int
     status: str
     user_id: int
