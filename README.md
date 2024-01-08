@@ -1,5 +1,5 @@
 # ScientificCircle
-
+BlaBla
 ## Pare słów o zastosowaniu aplikacji
 
 ## Użyte technologie
