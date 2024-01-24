@@ -11,7 +11,6 @@ class User(Base):
     last_name = Column(String, index=True)
     email = Column(String, unique=True, nullable=False, index=True)
     hashed_password = Column(String, nullable=False, index=True)
-    level = Column(String, nullable=True, index=True)
     function = Column(String, nullable=False, index=True)
     is_teamadmin = Column(Boolean(), default=False, index=True)
     is_webadmin = Column(Boolean(), default=False, index=True)

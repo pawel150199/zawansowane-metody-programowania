@@ -1,4 +1,4 @@
-# ScientificCircle
+# Science Club
 
 ## Pare słów o zastosowaniu aplikacji
 

@@ -4,5 +4,5 @@ from .report import (CreateReport, CreateMyReport, Report,
 from .message import Message
 from .reports_history import PdfFile, PdfFileCreate
 from .token import Token, TokenPayload
-from .user import (CreateScout, CreateUser, UpdateUser, User, UserBase,
+from .user import (CreateMember, CreateUser, UpdateUser, User, UserBase,
                    UserWithId)

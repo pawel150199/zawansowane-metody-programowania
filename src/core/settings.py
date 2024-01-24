@@ -5,7 +5,7 @@ from pydantic import AnyHttpUrl, BaseSettings, PostgresDsn
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "Harcownik"
+    PROJECT_NAME: str = "ScienceClub"
     SECRET_KEY: str = secrets.token_urlsafe(32)
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
     SERVER_NAME: str = "localhost"
@@ -26,7 +26,7 @@ class Settings(BaseSettings):
     SMTP_USER: Optional[str] = "harcownikapp@gmail.com"
     SMTP_PASSWORD: Optional[str] = None
     EMAILS_FROM_EMAIL: Optional[str] = "harcownikapp@gmail.com"
-    EMAILS_FROM_NAME: Optional[str] = "Harcownik"
+    EMAILS_FROM_NAME: Optional[str] = "ScienceClub"
 
     # EMAIL
     EMAIL_RESET_TOKEN_EXPIRE_HOURS: int = 48

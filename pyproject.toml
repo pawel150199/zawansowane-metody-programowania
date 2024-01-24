@@ -3,10 +3,10 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "ScientificCircle API"
+name = "ScienceClub API"
 version = "1.0"
-description = "API for ScientificCircle project"
-authors = ["Pawel Polski <pawel.polski99@gmail.com>"]
+description = "API for ScienceClub project"
+authors = ["Katarzyna Duszynska", "Pawel Polski", "Michal Wlosek"]
 
 [tool.poetry.dependencies]
 python = "^3.9"

@@ -9,7 +9,7 @@ from src.schemas.group import CreateGroup, UpdateGroup
 # POST
 def create_group(db: Session, group: CreateGroup):
     db_group = GroupModel(
-        name=group.name, number=group.number, szczep=group.szczep, city=group.city
+        name=group.name, wydzial=group.wydzial, uczelnia=group.uczelnia
     )
 
     db.add(db_group)
@@ -25,10 +25,6 @@ def get_group(db: Session, group_id: int):
 
 def get_groups(db: Session):
     return db.query(GroupModel).all()
-
-
-def get_group_by_number(db: Session, number: int):
-    return db.query(GroupModel).filter(GroupModel.number == number).all()
 
 
 # DELETE
