@@ -1,8 +1,8 @@
-"""ScientificCircle
+"""science_club
 
-Revision ID: 60df8e1803e2
+Revision ID: 67ff7c26c7fc
 Revises: 
-Create Date: 2024-01-08 21:48:02.828293
+Create Date: 2024-01-24 19:27:03.285852
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '60df8e1803e2'
+revision = '67ff7c26c7fc'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,25 +21,22 @@ def upgrade() -> None:
     op.create_table('group',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
-    sa.Column('number', sa.Integer(), nullable=True),
-    sa.Column('szczep', sa.String(), nullable=True),
-    sa.Column('city', sa.String(), nullable=True),
+    sa.Column('wydzial', sa.String(), nullable=True),
+    sa.Column('uczelnia', sa.String(), nullable=True),
     sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
     sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_group_city'), 'group', ['city'], unique=False)
     op.create_index(op.f('ix_group_id'), 'group', ['id'], unique=False)
     op.create_index(op.f('ix_group_name'), 'group', ['name'], unique=False)
-    op.create_index(op.f('ix_group_number'), 'group', ['number'], unique=False)
-    op.create_index(op.f('ix_group_szczep'), 'group', ['szczep'], unique=False)
+    op.create_index(op.f('ix_group_uczelnia'), 'group', ['uczelnia'], unique=False)
+    op.create_index(op.f('ix_group_wydzial'), 'group', ['wydzial'], unique=False)
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('first_name', sa.String(), nullable=True),
     sa.Column('last_name', sa.String(), nullable=True),
     sa.Column('email', sa.String(), nullable=False),
     sa.Column('hashed_password', sa.String(), nullable=False),
-    sa.Column('level', sa.String(), nullable=True),
     sa.Column('function', sa.String(), nullable=False),
     sa.Column('is_teamadmin', sa.Boolean(), nullable=True),
     sa.Column('is_webadmin', sa.Boolean(), nullable=True),
@@ -57,7 +54,6 @@ def upgrade() -> None:
     op.create_index(op.f('ix_user_is_teamadmin'), 'user', ['is_teamadmin'], unique=False)
     op.create_index(op.f('ix_user_is_webadmin'), 'user', ['is_webadmin'], unique=False)
     op.create_index(op.f('ix_user_last_name'), 'user', ['last_name'], unique=False)
-    op.create_index(op.f('ix_user_level'), 'user', ['level'], unique=False)
     op.create_table('report',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(), nullable=True),
@@ -97,7 +93,6 @@ def downgrade() -> None:
     op.drop_index(op.f('ix_report_id'), table_name='report')
     op.drop_index(op.f('ix_report_content'), table_name='report')
     op.drop_table('report')
-    op.drop_index(op.f('ix_user_level'), table_name='user')
     op.drop_index(op.f('ix_user_last_name'), table_name='user')
     op.drop_index(op.f('ix_user_is_webadmin'), table_name='user')
     op.drop_index(op.f('ix_user_is_teamadmin'), table_name='user')
@@ -107,10 +102,9 @@ def downgrade() -> None:
     op.drop_index(op.f('ix_user_first_name'), table_name='user')
     op.drop_index(op.f('ix_user_email'), table_name='user')
     op.drop_table('user')
-    op.drop_index(op.f('ix_group_szczep'), table_name='group')
-    op.drop_index(op.f('ix_group_number'), table_name='group')
+    op.drop_index(op.f('ix_group_wydzial'), table_name='group')
+    op.drop_index(op.f('ix_group_uczelnia'), table_name='group')
     op.drop_index(op.f('ix_group_name'), table_name='group')
     op.drop_index(op.f('ix_group_id'), table_name='group')
-    op.drop_index(op.f('ix_group_city'), table_name='group')
     op.drop_table('group')
     # ### end Alembic commands ###
