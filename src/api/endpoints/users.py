@@ -13,9 +13,9 @@ router = APIRouter()
 
 # POST
 # for testing purpose for now i will leave this endpoint
-@router.post("/users/scout/specificid/{group_id}", response_model=schemas.User)
-def create_scout_with_specific_group_id(
-    user: schemas.CreateScout,
+@router.post("/users/member/specificid/{group_id}", response_model=schemas.User)
+def create_member_with_specific_group_id(
+    user: schemas.CreateMember,
     db: Session = Depends(get_db),
     _: models.User = Depends(get_current_teamadmin),
 ) -> Any:
@@ -29,12 +29,12 @@ def create_scout_with_specific_group_id(
         send_new_account_email(
             email_to=user.email, username=user.first_name, password=user.password
         )
-    return crud.create_scout(db=db, user=user, group_id=user.group_id)
+    return crud.create_member(db=db, user=user, group_id=user.group_id)
 
 
-@router.post("/users/scout", response_model=schemas.User)
-def create_scout(
-    user: schemas.CreateScout,
+@router.post("/users/member", response_model=schemas.User)
+def create_member(
+    user: schemas.CreateMember,
     db: Session = Depends(get_db),
     current_teamadmin: models.User = Depends(get_current_teamadmin),
 ) -> Any:
@@ -48,7 +48,7 @@ def create_scout(
         send_new_account_email(
             email_to=user.email, username=user.first_name, password=user.password
         )
-    return crud.create_scout(db=db, user=user, group_id=current_teamadmin.group_id)
+    return crud.create_member(db=db, user=user, group_id=current_teamadmin.group_id)
 
 
 @router.post("/users/admin", response_model=schemas.User)

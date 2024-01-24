@@ -6,9 +6,8 @@ def init_users(db: Session) -> None:
         schemas.CreateUser(
             first_name="admin",
             last_name="admin",
-            email="admin@harcownik.com",
+            email="admin@admin.com",
             is_webadmin=True,
-            level="admin",
             function="admin",
             password="zaq12wsx",
         )

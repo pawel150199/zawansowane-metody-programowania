@@ -5,23 +5,22 @@ from pydantic import BaseModel
 
 class GroupBase(BaseModel):
     name: Optional[str]
-    number: Optional[int]
 
 
 class CreateGroup(GroupBase):
-    szczep: str
-    city: str
+    wydzial: str
+    uczelnia: str
 
 
 class UpdateGroup(GroupBase):
-    szczep: Optional[str]
-    city: Optional[str]
+    wydzial: Optional[str]
+    uczelnia: Optional[str]
 
 
 class Group(GroupBase):
     id: int
-    szczep: str
-    city: str
+    wydzial: str
+    uczelnia: str
 
     class Config:
         orm_mode = True

@@ -9,15 +9,6 @@ from src.api.helper import (get_current_user, get_current_webadmin,
 router = APIRouter()
 
 
-# POST
-@router.post("/groups/", response_model=schemas.Group)
-def create_group(group: schemas.CreateGroup, db: Session = Depends(get_db)) -> Any:
-    groups_in = crud.get_group_by_number(db, number=group.number)
-    if any(group.name == _group.name for _group in groups_in):
-        raise HTTPException(status_code=404, detail="Group not found")
-    return crud.create_group(db=db, group=group)
-
-
 # GET
 @router.get("/groups/", response_model=list[schemas.Group])
 def read_groups(

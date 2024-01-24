@@ -5,11 +5,11 @@ from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
 from src.core.security import get_password_hash, verify_password
 from src.models.user import User as UserModel
-from src.schemas.user import CreateScout, CreateUser, UpdateUser
+from src.schemas.user import CreateMember, CreateUser, UpdateUser
 
 
 # POST
-def create_scout(db: Session, user: CreateScout, group_id: int) -> UserModel:
+def create_member(db: Session, user: CreateMember, group_id: int) -> UserModel:
     db_user = UserModel(
         first_name=user.first_name,
         last_name=user.last_name,
@@ -17,7 +17,6 @@ def create_scout(db: Session, user: CreateScout, group_id: int) -> UserModel:
         is_teamadmin=False,
         is_webadmin=False,
         hashed_password=get_password_hash(user.password),
-        level=user.level,
         function=user.function,
         group_id=group_id,
     )
@@ -36,7 +35,6 @@ def create_user(db: Session, user: CreateUser) -> UserModel:
         is_teamadmin=user.is_teamadmin,
         is_webadmin=user.is_webadmin,
         hashed_password=get_password_hash(user.password),
-        level=user.level,
         function=user.function,
         group_id=user.group_id,
     )
@@ -96,7 +94,6 @@ def delete_user(db: Session, user_id: int) -> Optional[UserModel]:
     return db_user
 
 
-# UPDATE
 # UPDATE
 def update_user(
     db: Session, user_obj: UserModel, user_in: Union[UpdateUser, Dict[str, Any]]

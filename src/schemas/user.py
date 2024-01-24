@@ -9,7 +9,6 @@ class UserBase(BaseModel):
 
 
 class CreateUser(UserBase):
-    level: str
     function: Optional[str]
     password: Optional[str]
     group_id: Optional[int]
@@ -18,15 +17,13 @@ class CreateUser(UserBase):
 
 
 
-class CreateScout(UserBase):
-    level: str
+class CreateMember(UserBase):
     function: Optional[str]
     password: Optional[str]
     group_id: Optional[int]
 
 
 class UpdateUser(UserBase):
-    level: Optional[str]
     password: Optional[str]
     function: Optional[str]
     group_id: Optional[int]
@@ -34,7 +31,6 @@ class UpdateUser(UserBase):
 
 class User(UserBase):
     id: int
-    level: str
     function: str
     group_id: Optional[int]
     is_teamadmin: bool
