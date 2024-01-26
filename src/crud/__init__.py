@@ -1,4 +1,4 @@
-from .crud_group import (create_group, delete_group, get_group, get_groups, update_group)
+from .crud_group import (create_group, delete_group, get_group, get_groups, update_group, get_group_by_name)
 from .crud_report import (create_report, delete_report,
                                 get_report, get_report_by_group,
                                 get_report_by_user, update_report)
